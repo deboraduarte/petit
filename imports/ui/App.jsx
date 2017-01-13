@@ -1,5 +1,5 @@
 import react, { Component } from 'react';
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+import AccountsUIWrapper from './accountsUIWrapper.jsx';
 
 class App extends Component{
     render(){
