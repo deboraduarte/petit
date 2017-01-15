@@ -13,9 +13,14 @@ body{
     background-color: #ecf0f1;
 }
 #login-buttons{
-    color: #1abc9c;
+    color: #2c3e50;
+    display: block;
 }
-#login-button a{
+#login-buttons a{
     text-decoration: none;
 }
-
+.login-link-and-dropdown-list{
+    color: #2c3e50;
+    border-color: #7f8c8d;
+    background-color: #ecf0f1;
+}
