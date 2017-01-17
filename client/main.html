@@ -1,8 +1,16 @@
 <head>
   <title>Petit</title>
 </head>
- 
+
 <body>
-  <div id="render-target"></div>
-  {{> loginButtons}}
+    <div id="render-target"></div>
+    {{> atForm}}
 </body>
+
+<template name="atForm">
+    <form action="submit">
+        <input type="text" value="E-mail">
+        <input type="password" value="123456">
+        <button type="submit"> Entrar </button>
+    </form>
+</template>
