@@ -18,9 +18,6 @@ body{
 }
 #login-buttons a{
     text-decoration: none;
+    font-weigth: normal;
 }
-.login-link-and-dropdown-list{
-    color: #2c3e50;
-    border-color: #7f8c8d;
-    background-color: #ecf0f1;
-}
+
