@@ -31,3 +31,34 @@ body{
     padding: 1.4em;
     margin-bottom: 1em;
 }
+
+.logo-header{
+    background-image:url(/images/logo.svg);
+    height:14em;
+    background-size: auto 20em;
+    background-repeat: no-repeat;
+
+}
+
+.no-svg .logo-header{
+    background-image:url(/images/logo.png);    
+}
+
+.signup-link{
+    font-size:1em;
+    padding-top:1em;
+}
+
+@media screen and (max-width: 500px) {
+   .logo-header{
+    background-image:url(/images/logo-min.svg);
+    height:9em;
+    background-size: auto 10em;
+    background-repeat: no-repeat;
+
+}
+
+.no-svg .logo-header{
+    background-image:url(/images/logo.png);    
+}
+}
