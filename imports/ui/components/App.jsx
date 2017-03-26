@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
+import Dashboard from './Dashboard';
+import User from './Users';
 
 export default class App extends Component{
    
@@ -10,18 +12,22 @@ export default class App extends Component{
     }
     
     getMeteorData(){
-        return {isAuthenticated: Meteor.userId() !== null};
+        return {
+            isAuthenticated: Meteor.userId() !== null
+        }; 
+        
     }
-    
     componentWillMount(){
         if(!this.state.isAuthenticated){
             browserHistory.push('/login');
+            
         }
+        
     }
     
     componentDidUpdate(prevProps, prevState){
         if (!this.state.isAuthenticated) {
-        browserHistory.push('/login');
+            browserHistory.push('/login');
         }
     }
     
@@ -37,7 +43,10 @@ export default class App extends Component{
                 <nav className="navbar navbar-default navbar-static-top">
                   <div className="container">
                     <div className="navbar-header">
-                      <a className="navbar-brand" href="#">Auth App</a>
+                      <a className="navbar-brand" href="#"></a>
+                      <span>
+                        <User />
+                      </span>
                     </div>
                     <div className="navbar-collapse">
                       <ul className="nav navbar-nav navbar-right">
@@ -48,8 +57,9 @@ export default class App extends Component{
                     </div>
                   </div>
                 </nav>
-                {this.props.children}
+                <Dashboard />
               </div>
         );
     }
 }
+
