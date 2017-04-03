@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {browserHistory} from 'react-router';
 import Dashboard from './Dashboard';
 import User from './Users';
+import NavHead from './NavHead';
 
 export default class App extends Component{
    
@@ -40,23 +41,7 @@ export default class App extends Component{
     render(){
         return(
             <div>
-                <nav className="navbar navbar-default navbar-static-top">
-                  <div className="container">
-                    <div className="navbar-header">
-                      <a className="navbar-brand" href="#"></a>
-                      <span>
-                        <User />
-                      </span>
-                    </div>
-                    <div className="navbar-collapse">
-                      <ul className="nav navbar-nav navbar-right">
-                        <li>
-                          <a href="#" onClick={this.logout}>Logout</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
+                <NavHead />
                 <Dashboard />
               </div>
         );
