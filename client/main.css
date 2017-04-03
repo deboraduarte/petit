@@ -62,6 +62,19 @@ body{
     margin-right: 2em;
     top: 0;
 }
+.form-control-number{
+    height: 2em;
+    width: auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    margin-right: 2em;
+    top: 0;
+}
 .form-control-label{
     height: 2em;
     width: 4em;    
@@ -72,6 +85,28 @@ body{
 }
 select{
     margin-bottom: 1em;
+}
+.dropdown-menu{
+    position: relative !important;
+    top: 0 !important;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+}
+.dropdown-toggle{
+    text-align: center;
+    text-decoration: none;
+    padding-top: 0.5em;
+    font-size: 1.5em;
+}
+.dropdown-menu{
+    padding-bottom: 2em;
+}
+.panel-body li{
+    list-style: none;
+}
+a:hover{
+    text-decoration: none;
 }
 @media screen and (max-width: 500px) {
    .logo-header{
