@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { browserHistory, Link} from 'react-router';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
+import NavHead from './NavHead';
 
 import { Pets } from '../../api/pets';
+import User from './Users';
+import './App';
 
 export default class NewPet extends Component{
     constructor(props){
@@ -18,8 +22,8 @@ export default class NewPet extends Component{
             birthdate: '',
             castrated: true,
             adopted: true,
-            lost: false
-            
+            lost: false,
+            currentUser: Meteor.userId(),
         };
     }
     
@@ -35,7 +39,7 @@ export default class NewPet extends Component{
     
     handleSubmit(e){
         e.preventDefault();
-        
+        console.log(currentUser);
         let {
             petname,
             breed,
@@ -47,10 +51,11 @@ export default class NewPet extends Component{
             castrated,
             adopted,
             lost,
+            currentUser,
         } = this.state;
 
+        console.log(currentUser);
         this.setState({error: "Created"});
-        
         const data = {
             petname,
             breed,
@@ -62,10 +67,10 @@ export default class NewPet extends Component{
             castrated,
             adopted,
             lost,
+            currentUser,
         };
-        
+        console.log(data);
         Pets.insert(data, (err) => {
-            console.log('oi', err);
             if (err){
                 this.setState({
                     error: err.reason,
@@ -78,8 +83,11 @@ export default class NewPet extends Component{
     
     render(){
         const error = this.state.error;
+        const currentUser = Meteor.userId();
         return(
-            <div className="container">
+            <div>
+                <NavHead />
+                <h1 className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">Novo Pet</h1>
                 <form onSubmit={this.handleSubmit.bind(this)} className="login-form col-xs-12 col-sm-12 col-md-6 col-lg-6  col-lg-offset-3 col-md-offset-3">
                     <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="petname" value={this.state.petname} onChange={this.handleInputChange.bind(this)} placeholder="Nome do seu Pet" />
                     <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="breed" value={this.state.breed} onChange={this.handleInputChange.bind(this)} placeholder="Raça" />
