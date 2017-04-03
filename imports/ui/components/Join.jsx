@@ -16,8 +16,9 @@ export default class Join extends Component{
         let name = document.getElementById("signup-name").value;
         let email = document.getElementById("signup-email").value;
         let password = document.getElementById("signup-password").value;
+        let type = 'Default';
         this.setState({error: "teste"});
-        Accounts.createUser({email: email, username: name, password: password}, (err) => {
+        Accounts.createUser({email: email, username: name, password: password, type: type}, (err) => {
             if (err){
                 this.setState({
                     error: err.reason
