@@ -1,28 +1,31 @@
-import { Meteor } from 'meteor/meteor';
 import React, { Component } from 'react';
+import { browserHistory, Link} fro  m 'react-router';
+import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
+import './App';
 export default class User extends Component {
     constructor(props){
         super(props);
-        this.state = this.getMeteorData();
+        this.state = {user: 'teste'};
     }
     
-    getMeteorData(){
-        return {
-            currentUser: Meteor.user(),
-        };
+   componentDidMount(){
+        this.setState({user: Meteor.users.findOne(Meteor.userId)});
     }
+    componentWillUpdate(prevState){
+        this.setState({user: Meteor.users.findOne(Meteor.userId)});
+    }
+    componentDidUpdate(prevProps, prevState){
+        this.setState({user: Meteor.users.findOne(Meteor.userId)});
+    }
+    
     
   render() {
     return (
       <div>
-        {this.state.currentUser.username}
+        {this.state.user.username}
       </div>
     )
   }
-}
-
-User.contextTypes = {
-    router: React.PropTypes.object.isRequired,
 }
