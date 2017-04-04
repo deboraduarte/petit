@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { browserHistory, Link} fro  m 'react-router';
+import { browserHistory, Link} from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { createContainer } from 'meteor/react-meteor-data';
 
