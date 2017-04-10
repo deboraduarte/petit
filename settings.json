@@ -1,0 +1,7 @@
+{
+    "galaxy.meteor.com": {
+        "env": {
+            "MONGO_URL": "mongodb://petit:petit2017@ds157390.mlab.com:57390/petit"
+        }
+    }
+}
