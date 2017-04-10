@@ -43,6 +43,6 @@ class Dashboard extends Component{
 
 export default createContainer(() => {
   return {
-    pets: Pets.find({},{currentUser: Meteor.userId()}).fetch(),
+    pets: Pets.find({currentUser: Meteor.userId()}).fetch(),
   };
 }, Dashboard);
