@@ -9,6 +9,10 @@ import PetName from'./PetName';
 
 import './App';
 
+import Col from 'react-bootstrap/lib/Col';
+import Button  from 'react-bootstrap/lib/Button';
+import Glyphicon  from 'react-bootstrap/lib/Glyphicon';
+
 class Dashboard extends Component{
     renderPets(){
          return this.props.pets.map((pet) => (
@@ -20,22 +24,36 @@ class Dashboard extends Component{
     
     render(){
         return(
-            <div className="container">     
-                    {this.renderPets()}
-            
-                <a href="/newpet" className="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-                    <button  className="btn btn-lg col-md-12 col-lg-12 col-sm-12 col-xs-12" aria-label="Left Align">
-                        <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        Novo Pet
-                    </button>
-                    
-                </a>
-                <a href="/newvaccine" className="col-md-2 col-lg-2 col-sm-12 col-xs-12">
-                    <button  className="btn btn-lg col-md-12 col-lg-12 col-sm-12 col-xs-12" aria-label="Left Align">
-                        <span className="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        Nova Vacina
-                    </button>
-                </a>
+            <div>     
+                   
+                <Col
+                    sm={12}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    >
+                     {this.renderPets()}
+                        <a href="/newpet">
+                            <Button bsStyle="defautl" bsSize="large" type="submit" className="dashboard">
+                                <Glyphicon glyph="plus" />
+                                Adiconar Pet
+                            </Button>
+                        </a>
+                    </Col>
+                      <Col
+                    sm={12}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    >
+                        <a href="/newvaccine">
+                            <Button bsStyle="defautl" bsSize="large" type="submit" className="dashboard">
+                                <Glyphicon glyph="plus" />
+                                Adiconar Vacina
+                            </Button>
+                        </a>
+                    </Col>
+               
             </div>
         )
     }
@@ -44,5 +62,6 @@ class Dashboard extends Component{
 export default createContainer(() => {
   return {
     pets: Pets.find({currentUser: Meteor.userId()}).fetch(),
+    
   };
 }, Dashboard);
