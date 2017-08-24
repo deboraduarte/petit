@@ -10,11 +10,21 @@ import User from './Users';
 import PetOptions from './PetOptions';
 import './App';
 
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Col from 'react-bootstrap/lib/Col';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Button  from 'react-bootstrap/lib/Button';
+import FieldGroup  from 'react-bootstrap/lib/Button';
+
+import Pager  from 'react-bootstrap/lib/Pager';
+
 class NewVaccine extends Component{
     constructor(props){
         super(props);
         this.state = {
-            err: '',
+            error: '',
             petid: '',
             date: '',
             vaccinename: '',
@@ -22,9 +32,9 @@ class NewVaccine extends Component{
         };
     }
     
-    handleInputChange(event) {
+    handleChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = event.target.value;
         const name = target.name;
 
         this.setState({
@@ -37,7 +47,6 @@ class NewVaccine extends Component{
         let {
             petid,
             date,
-            birthdate,
             vaccinename,
             period,
         } = this.state;
@@ -45,7 +54,6 @@ class NewVaccine extends Component{
         const data = {
             petid,
             date,
-            birthdate,
             vaccinename,
             period,
         };
@@ -75,18 +83,109 @@ class NewVaccine extends Component{
         return(
             <div>
                 <NavHead />
+                <Pager>
+                    <Pager.Item previous href="/">&larr;</Pager.Item>
+                </Pager>
                 <h1 className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">Nova Vacina</h1>
-                <form onSubmit={this.handleSubmit.bind(this)} className="login-form col-xs-12 col-sm-12 col-md-6 col-lg-6  col-lg-offset-3 col-md-offset-3">
-                        <select className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" name="petname" value={this.state.petid} onChange={this.handleInputChange.bind(this)}>
-                            {this.renderPetOptions()}
-                        </select>
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="date" name="date" value={this.state.date} onChange={this.handleInputChange.bind(this)}/>
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="vaccinename" value={this.state.vaccinename} onChange={this.handleInputChange.bind(this)} placeholder="Vacina" />
-                        <input className="form-control-number col-xs-12 col-sm-12 col-md-6 col-lg-6" type="number" name="period" value={this.state.period} onChange={this.handleInputChange.bind(this)} placeholder="Periodicidade" />
-                       <span className="form-control-label col-xs-1 col-sm-1 col-md-2 col-lg-2">Meses</span>
-                    <button type="submit" className="btn btn-primary btn-lg col-xs-12 col-sm-12 col-md-12 col-xl-12 "> Salvar </button>
-                </form>
-                <div className="alert fade in ">{error}</div>
+                <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>
+                        <ControlLabel>Escolha o Pet</ControlLabel>
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Perdido" 
+                            name="petid"
+                            bsSize="lg"
+                            value={this.state.petid} 
+                            onChange={this.handleChange.bind(this)} >
+                                {this.renderPetOptions()}
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                        <FormGroup controlId="date">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="date" 
+                            placeholder="Data" 
+                            name="date" 
+                            bsSize="lg"
+                            value={this.state.date} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                        </FormGroup>
+                        <FormGroup controlId="vaccinename">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Vacina" 
+                            name="vaccinename" 
+                            bsSize="lg"
+                            value={this.state.vaccinename} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                        <FormGroup controlId="period">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="number" 
+                            placeholder="Periodicidade" 
+                            name="period" 
+                            bsSize="lg"
+                            value={this.state.period} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                   
+                
+                  <Col
+                    sm={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}
+                    >
+                    
+                        <Button bsStyle="primary" bsSize="large" type="submit">Registrar Vacina</Button>
+                    </Col>
+                    { error.length > 0 ?
+                    <Col
+                    className="alert alert-danger fade in"
+                    sm={10}
+                    xs={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}>
+                    {error}
+                    </Col>
+                    :''}
+                   
+                 </Form>
             </div>
         )
     }
