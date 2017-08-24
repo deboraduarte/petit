@@ -24,8 +24,7 @@ class Dashboard extends Component{
     
     render(){
         return(
-            <div>     
-                   
+            <div>        
                 <Col
                     sm={12}
                     md={4}

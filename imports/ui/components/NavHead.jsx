@@ -20,12 +20,13 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
     }
   
     render(){
+        const currentUser = Meteor.user().username;
         return(
          
               <Navbar collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        #Nome
+                        g{currentUser}
                     </Navbar.Brand>
                     <Navbar.Toggle />
                 </Navbar.Header>
