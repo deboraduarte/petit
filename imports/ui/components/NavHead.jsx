@@ -6,6 +6,11 @@ import { Pets } from '../../api/pets';
 import User from './Users';
 
 import './App';
+import Navbar from 'react-bootstrap/lib/Navbar';
+import Nav from 'react-bootstrap/lib/Nav';
+import NavItem from 'react-bootstrap/lib/NavItem'; 
+import NavDropdown from 'react-bootstrap/lib/NavDropdown';
+ import MenuItem from 'react-bootstrap/lib/MenuItem';   
 
  export default class NavHead extends Component{
     logout(e){
@@ -16,26 +21,25 @@ import './App';
   
     render(){
         return(
-             <nav className="navbar navbar-default navbar-static-top">
-                  <div className="container">
-                    <div className="navbar-header">
-                      <a className="navbar-brand" href="#"></a>
-                      <ul className="nav navbar-nav navbar-left">
-                        <li>
-                          <a href="/">Home</a>
-                        </li>
-                      </ul>
-                         
-                    </div>
-                    <div className="navbar-collapse">
-                      <ul className="nav navbar-nav navbar-right">
-                        <li>
-                          <a href="#" onClick={this.logout}>Logout</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </nav>
-        )
+         
+              <Navbar collapseOnSelect>
+                <Navbar.Header>
+                    <Navbar.Brand>
+                        #Nome
+                    </Navbar.Brand>
+                    <Navbar.Toggle />
+                </Navbar.Header>
+               <Navbar.Collapse>
+                    <Nav>
+                        <NavItem eventKey={1} href="/">
+                            Home
+                        </NavItem>
+                        <NavItem eventKey={2} href="#"  onClick={this.logout}>
+                            Logout
+                        </NavItem>
+                    </Nav>
+                </Navbar.Collapse>
+            </Navbar>
+           )
     }
 }
