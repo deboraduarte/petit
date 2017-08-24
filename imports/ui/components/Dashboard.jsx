@@ -28,13 +28,13 @@ class Dashboard extends Component{
                    
                 <Col
                     sm={12}
-                    md={10}
-                    lg={8}
+                    md={4}
+                    lg={4}
                     lgOffset={3}
                     >
                      {this.renderPets()}
                         <a href="/newpet">
-                            <Button bsStyle="defautl" bsSize="large" type="submit" className="dashboard">
+                            <Button bsStyle="default" bsSize="large" type="submit" className="dashboard">
                                 <Glyphicon glyph="plus" />
                                 Adiconar Pet
                             </Button>
@@ -42,12 +42,12 @@ class Dashboard extends Component{
                     </Col>
                       <Col
                     sm={12}
-                    md={10}
-                    lg={8}
+                    md={4}
+                    lg={4}
                     lgOffset={3}
                     >
                         <a href="/newvaccine">
-                            <Button bsStyle="defautl" bsSize="large" type="submit" className="dashboard">
+                            <Button bsStyle="default" bsSize="large" type="submit" className="dashboard">
                                 <Glyphicon glyph="plus" />
                                 Adiconar Vacina
                             </Button>

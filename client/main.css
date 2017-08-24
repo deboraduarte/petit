@@ -19,55 +19,35 @@ body{
     background-repeat: no-repeat;
 
 }
-
 .no-svg .logo-header{
     background-image:url(../public/images/logo.png);    
 }
-
-.signup-link{
-    font-size:1em;
-    padding-top:1em;
-}
-
-.
-.dropdown-menu{
-    position: relative !important;
-    top: 0 !important;
-    background: transparent;
-    box-shadow: none;
-    border: none;
-}
-.dropdown-toggle{
-    text-align: center;
-    text-decoration: none;
-    padding-top: 0.5em;
-    font-size: 1.5em;
-}
-.dropdown-menu{
-    padding-bottom: 2em;
-}
-.panel-body li{
-    list-style: none;
+.glyphicon{
+    margin-right: 1em;
 }
 a:hover{
     text-decoration: none;
 }
-@media screen and (min-width: 728px){
+@media screen and (min-width: 200px){
     .logo-header{
         height:30em;
         background-size: auto 30em;
     }
     .control-label{
-        font-size: 3em;
+        font-size: 1em;
     }
     .form-control{
-        font-size: 2em;
+        font-size: 1em;
         padding: 1.5em;
     }
     .btn{
-        font-size: 3em;
+        font-size: 1.5em;
         width:100%;
     }
+    .dashboard{
+        height: 5em;
+    }
+    
 }
 @media screen and (min-width: 1000px){
     .logo-header{
@@ -85,18 +65,9 @@ a:hover{
         font-size: 1.5em;
         width: 100%;
     }
-}
-@media screen and (max-width: 500px) {
-    body{
-        font-size: 10em !important;
+    
+    .dashboard{
+        height: 3em;
     }
-   .logo-header{
-    background-image:url(/images/logo-min.svg);
-    height:9em;
-    background-size: auto 10em;
-    background-repeat: no-repeat;
-    }
-.no-svg .logo-header{
-    background-image:url(/images/logo.png);    
 }
-}
+    
