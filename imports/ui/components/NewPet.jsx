@@ -8,11 +8,21 @@ import { Pets } from '../../api/pets';
 import User from './Users';
 import './App';
 
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Col from 'react-bootstrap/lib/Col';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Button  from 'react-bootstrap/lib/Button';
+import FieldGroup  from 'react-bootstrap/lib/Button';
+
+import Pager  from 'react-bootstrap/lib/Pager';
+
 export default class NewPet extends Component{
     constructor(props){
         super(props);
         this.state = {
-            err: '',
+            error: '',
             petname: '',
             breed: '',
             specie: 'Cachorro',
@@ -27,9 +37,9 @@ export default class NewPet extends Component{
         };
     }
     
-    handleInputChange(event) {
+     handleChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = event.target.value;
         const name = target.name;
 
         this.setState({
@@ -87,36 +97,230 @@ export default class NewPet extends Component{
         return(
             <div>
                 <NavHead />
+                <Pager>
+                    <Pager.Item previous href="/">&larr;</Pager.Item>
+                </Pager>
                 <h1 className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">Novo Pet</h1>
-                <form onSubmit={this.handleSubmit.bind(this)} className="login-form col-xs-12 col-sm-12 col-md-6 col-lg-6  col-lg-offset-3 col-md-offset-3">
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="petname" value={this.state.petname} onChange={this.handleInputChange.bind(this)} placeholder="Nome do seu Pet" />
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="breed" value={this.state.breed} onChange={this.handleInputChange.bind(this)} placeholder="Raça" />
-                    <select className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" name="specie" value={this.state.specie} onChange={this.handleInputChange.bind(this)}>
-                        <option value="cachorro">Cachorro</option>
-                        <option value="gato">Gato</option>
-                    </select>
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="color" value={this.state.color} onChange={this.handleInputChange.bind(this)} placeholder="Cor do Pelo" />
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="text" name="eyecolor" value={this.state.eyecolor} onChange={this.handleInputChange.bind(this)} placeholder="Cor dos Olhos" />
-                    <select className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" name="sex" value={this.state.sex} onChange={this.handleInputChange.bind(this)}>
-                        <option value="macho">Macho</option>
-                        <option value="femea">Fêmea</option>
-                    </select>
-                    <input className="form-control col-xs-12 col-sm-12 col-md-6 col-lg-6" type="date" name="birthdate" value={this.state.birthdate} onChange={this.handleInputChange.bind(this)}/>
-                    <div className="col-xs-12 col-sm-12 col-md-5 col-lg-4">
-                        <input className="form-control-checkbox col-xs-1 col-sm-1 col-md-2 col-lg-2" id="castrated" type="checkbox" name="castrated" checked={this.state.castrated} onChange={this.handleInputChange.bind(this)} />
-                        <label className="form-control-label col-xs-1 col-sm-1 col-md-2 col-lg-2" for="castrated">Castrado</label>
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                        <input className="form-control-checkbox col-xs-1 col-sm-1 col-md-2 col-lg-2" type="checkbox" id="adopted" name="adopted" checked={this.state.adopted} onChange={this.handleInputChange.bind(this)}/>
-                        <label className="form-control-label col-xs-1 col-sm-1 col-md-2 col-lg-2">Adotado</label>
-                    </div>
-                    <div className="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                       <input className="form-control-checkbox col-xs-1 col-sm-1 col-md-2 col-lg-2" id="lost" type="checkbox" name="lost" checked={this.state.lost} onChange={this.handleInputChange.bind(this)}/>
-                       <label className="form-control-label col-xs-1 col-sm-1 col-md-2 col-lg-2">Perdido</label>  
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-lg col-xs-12 col-sm-12 col-md-12 col-xl-12 "> Cadastrar Novo Pet </button>
-                </form>
-                <div className="alert fade in ">{error}</div>
+                <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                    <FormGroup controlId="petname">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Nome do seu Pet" 
+                            name="petname" 
+                            bsSize="lg"
+                            value={this.state.petname} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="breed">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Raça" 
+                            name="breed" 
+                            bsSize="lg"
+                            value={this.state.breed} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}> 
+                        <ControlLabel>Espécie</ControlLabel>
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Espécie" 
+                            name="specie" 
+                            bsSize="lg"
+                            value={this.state.specie} 
+                            onChange={this.handleChange.bind(this)} >
+                            <option value="Gato">Gato</option>
+                            <option value="Cachorro">Cachorro</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                   
+                    <FormGroup controlId="color">
+                         <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Cor do Pelo" 
+                            name="color" 
+                            bsSize="lg"
+                            value={this.state.color} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="eyecolor">
+                         <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Cor dos Olhos" 
+                            name="eyecolor" 
+                            bsSize="lg"
+                            value={this.state.eyecolor} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="eyecolor">
+                         <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Data de Nascimento" 
+                            name="birthdate" 
+                            bsSize="lg"
+                            value={this.state.birthdate} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                     <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Sex" 
+                            name="sex" 
+                            bsSize="lg"
+                            value={this.state.sex} 
+                            onChange={this.handleChange.bind(this)} >
+                            <option  defaultValue="Macho">Macho</option>
+                            <option value="Femea">Fêmea</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>  
+                        <ControlLabel>Castrado</ControlLabel>
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Castrado" 
+                            name="castrated" 
+                            bsSize="lg"
+                            value={this.state.castrated} 
+                            onChange={this.handleChange.bind(this)} >
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                     <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>
+                        <ControlLabel>Adotado</ControlLabel>
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Adotado" 
+                            name="adopted" 
+                            bsSize="lg"
+                            value={this.state.adopted} 
+                            onChange={this.handleChange.bind(this)} >
+                            <option value="Sim">Sim</option>
+                            <option value="Não">Não</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="formControlsSelect">
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={10}
+                        smOffset={1}
+                        xsOffset={1}>
+                        <ControlLabel>Perdido</ControlLabel>
+                            <FormControl
+                            componentClass="select"
+                            type="select" 
+                            placeholder="Perdido" 
+                            name="lost"
+                            bsSize="lg"
+                            value={this.state.adopted} 
+                            onChange={this.handleChange.bind(this)} >
+                            <option value="sim">Sim</option>
+                            <option value="não">Não</option>
+                            </FormControl>
+                        </Col>
+                    </FormGroup>
+                    <Col
+                    sm={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}
+                    >
+                    
+                        <Button bsStyle="primary" bsSize="large" type="submit">Registrar Pet</Button>
+                    </Col>
+                    { error.length > 0 ?
+                    <Col
+                    className="alert alert-danger fade in"
+                    sm={10}
+                    xs={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}>
+                    {error}
+                    </Col>
+                    :''}
+                   
+                 </Form>
             </div>
         )
     }
