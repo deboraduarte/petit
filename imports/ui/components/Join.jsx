@@ -1,52 +1,219 @@
 import React, {Component, PropTypes} from 'react';
 import { browserHistory, Link} from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
+import Form from 'react-bootstrap/lib/Form';
+import FormGroup from 'react-bootstrap/lib/FormGroup';
+import FormControl from 'react-bootstrap/lib/FormControl';
+import Col from 'react-bootstrap/lib/Col';
+import ControlLabel from 'react-bootstrap/lib/ControlLabel';
+import Button  from 'react-bootstrap/lib/Button';
+import FieldGroup  from 'react-bootstrap/lib/Button';
+
+import Pager  from 'react-bootstrap/lib/Pager';
+
 
 export default class Join extends Component{
     constructor(props){
         super(props);
         this.state = {
-            error: ''
+            error: '',
+            email: '',
+            password: '',
+            passwordConfirm: '',
         };
-        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+     handleChange(event) {
+        const target = event.target;
+        const value = event.target.value;
+        const name = target.name;
+
+        this.setState({
+            [name]: value,
+        });
     }
     
     handleSubmit(e){
         e.preventDefault();
-        let name = document.getElementById("signup-name").value;
-        let email = document.getElementById("signup-email").value;
-        let password = document.getElementById("signup-password").value;
-        let type = 'Default';
-        this.setState({error: "teste"});
-        Accounts.createUser({email: email, username: name, password: password, type: type}, (err) => {
-            if (err){
-                this.setState({
-                    error: err.reason
-                });
-            } else {
-                browserHistory.push('/login')
-            }
-        });
+        let {
+            email,
+            password,
+            passwordConfirm,
+        } = this.state;
+        if(password === passwordConfirm){
+            Accounts.createUser({email: email, username: name, password: password, type: type}, (err) => {
+                if (err){
+                    this.setState({
+                        error: err.reason
+                    });
+                } else {
+                    Meteor.loginWithPassword(email, password, (err) =>{
+                    if(err){
+                        this.setState({
+                            error: err.reason
+                        });
+                    } else{
+                        browserHistory.push('/');
+            
+                    }
+                    });
+                }
+            });
+        } else {
+            this.setState({
+                error: "As senhas não são iguais"
+            })
+        }
+        
     }
     
     render(){
         const error = this.state.error;
         return(
-            <div className='container'>
-                <header itemscope itemtype="http://schema.org/Organization">
-                    <span>Cadastre-se</span>
-                </header>
-                { error.length > 0 ?
-                <div className="alert alert-danger fade in">{error}</div>
-                :''}
-                <form onSubmit={this.handleSubmit} id="login-form" className="login-form col-xs-12 col-sm-12 col-md-6 col-xl-6  col-lg-offset-3 col-md-offset-3" >
-                    <input type="text" id="signup-name" className="form-control col-xs-12 col-sm-12 col-md-6 col-xl-6" placeholder="Nome" />
-                    <input type="text" id="signup-email" className="form-control col-xs-12 col-sm-12 col-md-6 col-xl-6" placeholder="E-mail" />
-                    <input type="password" id="signup-password" className="form-control col-xs-12 col-sm-12 col-md-6 col-xl-6" placeholder="123456" />
-                    <button type="submit" className="btn btn-primary btn-lg col-xs-12 col-sm-12 col-md-6 col-xl-6 col-md-offset-3 col-lg-offset-3"> Entrar </button>
-                    <a href="#" className="signup-link col-xs-12 col-sm-12 col-lg-6 col-md-6 col-lg-offset-3 col-md-offset-3"> Saiba mais sobre o Pet.it </a>
-                </form>
-            </div>
+            <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
+                    <Pager>
+                        <Pager.Item previous href="/">&larr;</Pager.Item>
+                    </Pager>
+                    <Col
+                    className="logo-header"
+                    sm={6}
+                    md={12}
+                    lg={8}
+                    xs={8}
+                    lgOffset={4}
+                    smOffset={2}
+                    xsOffset={3}>
+                    
+                    </Col>
+                   
+                   <FormGroup controlId="name">
+                        <Col 
+                        componentClass={ControlLabel} 
+                        sm={2}
+                        md={2}
+                        lg={2}
+                        xs={2}
+                        smOffset={1}
+                        xsOffset={1}
+                        bsSize="lg">
+                            Nome:
+                        </Col>
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={8}
+                        smOffset={1}>  
+                            <FormControl 
+                            type="text" 
+                            placeholder="Nome" 
+                            name="name" 
+                            bsSize="lg"
+                            value={this.state.name} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="login-email">
+                        <Col 
+                        componentClass={ControlLabel} 
+                        sm={2}
+                        md={2}
+                        lg={2}
+                        xs={2}
+                        smOffset={1}
+                        xsOffset={1}
+                        bsSize="lg">
+                            Email
+                        </Col>
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={8}
+                        smOffset={1}>  
+                            <FormControl 
+                            type="email" 
+                            placeholder="Email" 
+                            name="email" 
+                            bsSize="lg"
+                            value={this.state.email} 
+                            onChange={this.handleChange.bind(this)} />
+                        </Col>
+                    </FormGroup>
+                    <FormGroup controlId="login-senha">
+                        <Col 
+                        componentClass={ControlLabel} 
+                        sm={2}
+                        md={2}
+                        lg={2}
+                        xs={2}
+                        smOffset={1}
+                        xsOffset={1}>
+                            Senha
+                        </Col>
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={8}
+                        smOffset={1}>   
+                            <FormControl 
+                            type="password" 
+                            placeholder="Senha" 
+                            name="password" 
+                            value={this.state.password} 
+                            onChange={this.handleChange.bind(this)}
+                            bsSize="lg"/>
+                        </Col>
+                    </FormGroup>
+                      <FormGroup controlId="login-senha2">
+                        <Col 
+                        componentClass={ControlLabel} 
+                        sm={2}
+                        md={2}
+                        lg={2}
+                        xs={2}
+                        smOffset={1}
+                        xsOffset={1}>
+                            Repita a Senha
+                        </Col>
+                        <Col 
+                        sm={10}
+                        md={8}
+                        lg={8}
+                        xs={8}
+                        smOffset={1}>   
+                            <FormControl 
+                            type="password" 
+                            placeholder="Confirme a Senha" 
+                            name="passwordConfirm" 
+                            value={this.state.passwordConfirm} 
+                            onChange={this.handleChange.bind(this)}
+                            bsSize="lg"/>
+                        </Col>
+                    </FormGroup>
+                    <Col
+                    sm={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}
+                    >
+                        <Button bsStyle="primary" bsSize="large" type="submit">Finalizar Cadastro</Button>
+                    </Col>
+                    { error.length > 0 ?
+                    <Col
+                    className="alert alert-danger fade in"
+                    sm={10}
+                    xs={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}>
+                    {error}
+                    </Col>
+                    :''}
+                   
+                 </Form>
         );
     }
 } 
