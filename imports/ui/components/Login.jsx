@@ -59,27 +59,31 @@ export default class Login extends Component{
                 <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                     <Col
                     className="logo-header"
-                    sm={8}
+                    ssm={6}
                     md={12}
                     lg={8}
+                    xs={8}
                     lgOffset={4}
-                    smOffset={3 }>
+                    smOffset={2}
+                    xsOffset={3}>
                     </Col>            
                     <FormGroup controlId="login-email">
                         <Col 
                         componentClass={ControlLabel} 
-                        sm={3}
+                        sm={2}
                         md={2}
                         lg={2}
                         xs={2}
+                        smOffset={1}
+                        xsOffset={1}
                         bsSize="lg">
                             Email
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
-                        xs={10}
+                        xs={8}
                         smOffset={1}>  
                             <FormControl 
                             type="email" 
@@ -93,17 +97,19 @@ export default class Login extends Component{
                     <FormGroup controlId="login-senha">
                         <Col 
                         componentClass={ControlLabel} 
-                        sm={3}
+                       sm={2}
                         md={2}
                         lg={2}
-                        xs={2}>
+                        xs={2}
+                        smOffset={1}
+                        xsOffset={1}>
                             Senha
                         </Col>
                         <Col 
                         sm={10}
                         md={8}
                         lg={8}
-                        xs={10}
+                        xs={8}
                         smOffset={1}>   
                             <FormControl 
                             type="password" 
@@ -126,7 +132,8 @@ export default class Login extends Component{
                     <Col
                     sm={10}
                     md={10}
-                    lg={10}
+                    xs={8}
+                    lg={8}
                     lgOffset={3}
                     smOffset={1}>
                         <a href="join">
@@ -134,6 +141,18 @@ export default class Login extends Component{
                         </a>
                
                     </Col>
+                    { error.length > 0 ?
+                    <Col
+                    className="alert alert-danger fade in"
+                    sm={10}
+                    xs={10}
+                    md={10}
+                    lg={8}
+                    lgOffset={3}
+                    smOffset={1}>
+                    {error}
+                    </Col>
+                    :''}
                  </Form>
         );
     }
