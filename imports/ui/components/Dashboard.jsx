@@ -9,9 +9,7 @@ import PetName from'./PetName';
 
 import './App';
 
-import Col from 'react-bootstrap/lib/Col';
-import Button  from 'react-bootstrap/lib/Button';
-import Glyphicon  from 'react-bootstrap/lib/Glyphicon';
+import { Col, Button, Glyphicon } from 'react-bootstrap';
 
 class Dashboard extends Component{
     renderPets(){
@@ -21,10 +19,10 @@ class Dashboard extends Component{
             </div>
         ));
     }
-    
+
     render(){
         return(
-            <div>        
+            <div>
                 <Col
                     sm={12}
                     md={4}
@@ -52,7 +50,7 @@ class Dashboard extends Component{
                             </Button>
                         </a>
                     </Col>
-               
+
             </div>
         )
     }
@@ -61,6 +59,6 @@ class Dashboard extends Component{
 export default createContainer(() => {
   return {
     pets: Pets.find({currentUser: Meteor.userId()}).fetch(),
-    
+
   };
 }, Dashboard);

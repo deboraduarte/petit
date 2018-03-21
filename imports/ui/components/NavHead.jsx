@@ -6,11 +6,7 @@ import { Pets } from '../../api/pets';
 import User from './Users';
 
 import './App';
-import Navbar from 'react-bootstrap/lib/Navbar';
-import Nav from 'react-bootstrap/lib/Nav';
-import NavItem from 'react-bootstrap/lib/NavItem'; 
-import NavDropdown from 'react-bootstrap/lib/NavDropdown';
- import MenuItem from 'react-bootstrap/lib/MenuItem';   
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';   
 
  export default class NavHead extends Component{
     logout(e){
@@ -18,11 +14,11 @@ import NavDropdown from 'react-bootstrap/lib/NavDropdown';
         Meteor.logout();
         browserHistory.push('login');
     }
-  
+
     render(){
         const currentUser = Meteor.user().username;
         return(
-         
+
               <Navbar collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>

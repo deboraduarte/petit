@@ -7,16 +7,15 @@ import NavHead from './NavHead';
 import { Pets } from '../../api/pets';
 import User from './Users';
 import './App';
-
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Col from 'react-bootstrap/lib/Col';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button  from 'react-bootstrap/lib/Button';
-import FieldGroup  from 'react-bootstrap/lib/Button';
-
-import Pager  from 'react-bootstrap/lib/Pager';
+ 
+import { Form,
+        FormGroup,
+        FormControl,
+        Col,
+        ControlLabel,
+        Button,
+        FieldGroup,
+        Pager }  from 'react-bootstrap';
 
 export default class NewPet extends Component{
     constructor(props){
@@ -36,7 +35,7 @@ export default class NewPet extends Component{
             currentUser: Meteor.userId(),
         };
     }
-    
+
      handleChange(event) {
         const target = event.target;
         const value = event.target.value;
@@ -46,7 +45,7 @@ export default class NewPet extends Component{
             [name]: value,
         });
     }
-    
+
     handleSubmit(e){
         e.preventDefault();
         console.log(currentUser);
@@ -90,7 +89,7 @@ export default class NewPet extends Component{
             }
         });
     }
-    
+
     render(){
         const error = this.state.error;
         const currentUser = Meteor.userId();
@@ -103,128 +102,128 @@ export default class NewPet extends Component{
                 <h1 className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">Novo Pet</h1>
                 <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                     <FormGroup controlId="petname">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Nome do seu Pet" 
-                            name="petname" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Nome do seu Pet"
+                            name="petname"
                             bsSize="lg"
-                            value={this.state.petname} 
+                            value={this.state.petname}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="breed">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Raça" 
-                            name="breed" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Raça"
+                            name="breed"
                             bsSize="lg"
-                            value={this.state.breed} 
+                            value={this.state.breed}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}> 
+                        xsOffset={1}>
                         <ControlLabel>Espécie</ControlLabel>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Espécie" 
-                            name="specie" 
+                            type="select"
+                            placeholder="Espécie"
+                            name="specie"
                             bsSize="lg"
-                            value={this.state.specie} 
+                            value={this.state.specie}
                             onChange={this.handleChange.bind(this)} >
                             <option value="Gato">Gato</option>
                             <option value="Cachorro">Cachorro</option>
                             </FormControl>
                         </Col>
                     </FormGroup>
-                   
+
                     <FormGroup controlId="color">
-                         <Col 
+                         <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Cor do Pelo" 
-                            name="color" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Cor do Pelo"
+                            name="color"
                             bsSize="lg"
-                            value={this.state.color} 
+                            value={this.state.color}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="eyecolor">
-                         <Col 
+                         <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Cor dos Olhos" 
-                            name="eyecolor" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Cor dos Olhos"
+                            name="eyecolor"
                             bsSize="lg"
-                            value={this.state.eyecolor} 
+                            value={this.state.eyecolor}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="eyecolor">
-                         <Col 
+                         <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Data de Nascimento" 
-                            name="birthdate" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Data de Nascimento"
+                            name="birthdate"
                             bsSize="lg"
-                            value={this.state.birthdate} 
+                            value={this.state.birthdate}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                      <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
+                        xsOffset={1}>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Sex" 
-                            name="sex" 
+                            type="select"
+                            placeholder="Sex"
+                            name="sex"
                             bsSize="lg"
-                            value={this.state.sex} 
+                            value={this.state.sex}
                             onChange={this.handleChange.bind(this)} >
                             <option  defaultValue="Macho">Macho</option>
                             <option value="Femea">Fêmea</option>
@@ -232,21 +231,21 @@ export default class NewPet extends Component{
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
+                        xsOffset={1}>
                         <ControlLabel>Castrado</ControlLabel>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Castrado" 
-                            name="castrated" 
+                            type="select"
+                            placeholder="Castrado"
+                            name="castrated"
                             bsSize="lg"
-                            value={this.state.castrated} 
+                            value={this.state.castrated}
                             onChange={this.handleChange.bind(this)} >
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
@@ -254,7 +253,7 @@ export default class NewPet extends Component{
                         </Col>
                     </FormGroup>
                      <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
@@ -264,11 +263,11 @@ export default class NewPet extends Component{
                         <ControlLabel>Adotado</ControlLabel>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Adotado" 
-                            name="adopted" 
+                            type="select"
+                            placeholder="Adotado"
+                            name="adopted"
                             bsSize="lg"
-                            value={this.state.adopted} 
+                            value={this.state.adopted}
                             onChange={this.handleChange.bind(this)} >
                             <option value="Sim">Sim</option>
                             <option value="Não">Não</option>
@@ -276,7 +275,7 @@ export default class NewPet extends Component{
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
@@ -286,11 +285,11 @@ export default class NewPet extends Component{
                         <ControlLabel>Perdido</ControlLabel>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Perdido" 
+                            type="select"
+                            placeholder="Perdido"
                             name="lost"
                             bsSize="lg"
-                            value={this.state.adopted} 
+                            value={this.state.adopted}
                             onChange={this.handleChange.bind(this)} >
                             <option value="sim">Sim</option>
                             <option value="não">Não</option>
@@ -304,7 +303,7 @@ export default class NewPet extends Component{
                     lgOffset={3}
                     smOffset={1}
                     >
-                    
+
                         <Button bsStyle="primary" bsSize="large" type="submit">Registrar Pet</Button>
                     </Col>
                     { error.length > 0 ?
@@ -319,7 +318,7 @@ export default class NewPet extends Component{
                     {error}
                     </Col>
                     :''}
-                   
+
                  </Form>
             </div>
         )

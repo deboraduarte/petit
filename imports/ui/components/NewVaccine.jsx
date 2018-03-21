@@ -10,15 +10,14 @@ import User from './Users';
 import PetOptions from './PetOptions';
 import './App';
 
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Col from 'react-bootstrap/lib/Col';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button  from 'react-bootstrap/lib/Button';
-import FieldGroup  from 'react-bootstrap/lib/Button';
-
-import Pager  from 'react-bootstrap/lib/Pager';
+import { Form,
+        FormGroup,
+        FormControl,
+        Col,
+        ControlLabel,
+        Button,
+        FieldGroup,
+        Pager }  from 'react-bootstrap/lib/Pager';
 
 class NewVaccine extends Component{
     constructor(props){
@@ -31,7 +30,7 @@ class NewVaccine extends Component{
             period: '',
         };
     }
-    
+
     handleChange(event) {
         const target = event.target;
         const value = event.target.value;
@@ -41,7 +40,7 @@ class NewVaccine extends Component{
             [name]: value,
         });
     }
-    
+
     handleSubmit(e){
         e.preventDefault();
         let {
@@ -68,15 +67,15 @@ class NewVaccine extends Component{
             }
         });
     }
-    
+
     renderPetOptions(){
          return this.props.pets.map((pet) => (
                 <PetOptions key={pet._id} pet={pet} />
-          
+
         ));
     }
-    
-    
+
+
     render(){
         const error = this.state.error;
         const currentUser = Meteor.userId();
@@ -89,7 +88,7 @@ class NewVaccine extends Component{
                 <h1 className="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-offset-3 col-lg-offset-3">Nova Vacina</h1>
                 <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                 <FormGroup controlId="formControlsSelect">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
@@ -99,69 +98,69 @@ class NewVaccine extends Component{
                         <ControlLabel>Escolha o Pet</ControlLabel>
                             <FormControl
                             componentClass="select"
-                            type="select" 
-                            placeholder="Perdido" 
+                            type="select"
+                            placeholder="Perdido"
                             name="petid"
                             bsSize="lg"
-                            value={this.state.petid} 
+                            value={this.state.petid}
                             onChange={this.handleChange.bind(this)} >
                                 {this.renderPetOptions()}
                             </FormControl>
                         </Col>
                     </FormGroup>
                         <FormGroup controlId="date">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="date" 
-                            placeholder="Data" 
-                            name="date" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="date"
+                            placeholder="Data"
+                            name="date"
                             bsSize="lg"
-                            value={this.state.date} 
+                            value={this.state.date}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                         </FormGroup>
                         <FormGroup controlId="vaccinename">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Vacina" 
-                            name="vaccinename" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Vacina"
+                            name="vaccinename"
                             bsSize="lg"
-                            value={this.state.vaccinename} 
+                            value={this.state.vaccinename}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                         <FormGroup controlId="period">
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={10}
                         smOffset={1}
-                        xsOffset={1}>  
-                            <FormControl 
-                            type="number" 
-                            placeholder="Periodicidade" 
-                            name="period" 
+                        xsOffset={1}>
+                            <FormControl
+                            type="number"
+                            placeholder="Periodicidade"
+                            name="period"
                             bsSize="lg"
-                            value={this.state.period} 
+                            value={this.state.period}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
-                   
-                
+
+
                   <Col
                     sm={10}
                     md={10}
@@ -169,7 +168,7 @@ class NewVaccine extends Component{
                     lgOffset={3}
                     smOffset={1}
                     >
-                    
+
                         <Button bsStyle="primary" bsSize="large" type="submit">Registrar Vacina</Button>
                     </Col>
                     { error.length > 0 ?
@@ -184,7 +183,7 @@ class NewVaccine extends Component{
                     {error}
                     </Col>
                     :''}
-                   
+
                  </Form>
             </div>
         )

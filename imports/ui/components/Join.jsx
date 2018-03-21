@@ -1,15 +1,15 @@
 import React, {Component, PropTypes} from 'react';
 import { browserHistory, Link} from 'react-router';
-import { Accounts } from 'meteor/accounts-base';
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Col from 'react-bootstrap/lib/Col';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button  from 'react-bootstrap/lib/Button';
-import FieldGroup  from 'react-bootstrap/lib/Button';
+import { Accounts } from 'meteor/accounts-base';;
 
-import Pager  from 'react-bootstrap/lib/Pager';
+import { Pager,
+        Form,
+        FormControl,
+        FormGroup,
+        Col,
+        ControlLabel,
+        Button,
+        FieldGroup }  from 'react-bootstrap';
 
 
 export default class Join extends Component{
@@ -31,7 +31,7 @@ export default class Join extends Component{
             [name]: value,
         });
     }
-    
+
     handleSubmit(e){
         e.preventDefault();
         let {
@@ -53,7 +53,7 @@ export default class Join extends Component{
                         });
                     } else{
                         browserHistory.push('/');
-            
+
                     }
                     });
                 }
@@ -63,9 +63,9 @@ export default class Join extends Component{
                 error: "As senhas não são iguais"
             })
         }
-        
+
     }
-    
+
     render(){
         const error = this.state.error;
         return(
@@ -82,12 +82,12 @@ export default class Join extends Component{
                     lgOffset={4}
                     smOffset={2}
                     xsOffset={3}>
-                    
+
                     </Col>
-                   
+
                    <FormGroup controlId="name">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                         sm={2}
                         md={2}
                         lg={2}
@@ -97,24 +97,24 @@ export default class Join extends Component{
                         bsSize="lg">
                             Nome:
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>  
-                            <FormControl 
-                            type="text" 
-                            placeholder="Nome" 
-                            name="name" 
+                        smOffset={1}>
+                            <FormControl
+                            type="text"
+                            placeholder="Nome"
+                            name="name"
                             bsSize="lg"
-                            value={this.state.name} 
+                            value={this.state.name}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="login-email">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                         sm={2}
                         md={2}
                         lg={2}
@@ -124,24 +124,24 @@ export default class Join extends Component{
                         bsSize="lg">
                             Email
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>  
-                            <FormControl 
-                            type="email" 
-                            placeholder="Email" 
-                            name="email" 
+                        smOffset={1}>
+                            <FormControl
+                            type="email"
+                            placeholder="Email"
+                            name="email"
                             bsSize="lg"
-                            value={this.state.email} 
+                            value={this.state.email}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="login-senha">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                         sm={2}
                         md={2}
                         lg={2}
@@ -150,24 +150,24 @@ export default class Join extends Component{
                         xsOffset={1}>
                             Senha
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>   
-                            <FormControl 
-                            type="password" 
-                            placeholder="Senha" 
-                            name="password" 
-                            value={this.state.password} 
+                        smOffset={1}>
+                            <FormControl
+                            type="password"
+                            placeholder="Senha"
+                            name="password"
+                            value={this.state.password}
                             onChange={this.handleChange.bind(this)}
                             bsSize="lg"/>
                         </Col>
                     </FormGroup>
                       <FormGroup controlId="login-senha2">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                         sm={2}
                         md={2}
                         lg={2}
@@ -176,17 +176,17 @@ export default class Join extends Component{
                         xsOffset={1}>
                             Repita a Senha
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>   
-                            <FormControl 
-                            type="password" 
-                            placeholder="Confirme a Senha" 
-                            name="passwordConfirm" 
-                            value={this.state.passwordConfirm} 
+                        smOffset={1}>
+                            <FormControl
+                            type="password"
+                            placeholder="Confirme a Senha"
+                            name="passwordConfirm"
+                            value={this.state.passwordConfirm}
                             onChange={this.handleChange.bind(this)}
                             bsSize="lg"/>
                         </Col>
@@ -212,8 +212,8 @@ export default class Join extends Component{
                     {error}
                     </Col>
                     :''}
-                   
+
                  </Form>
         );
     }
-} 
+}

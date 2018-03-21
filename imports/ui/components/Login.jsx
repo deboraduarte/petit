@@ -2,13 +2,9 @@ import React, {Component} from 'react';
 import { browserHistory, Link } from 'react-router';
 import { createContainer } from 'meteor/react-meteor-data';
 import './App';
-import Form from 'react-bootstrap/lib/Form';
-import FormGroup from 'react-bootstrap/lib/FormGroup';
-import FormControl from 'react-bootstrap/lib/FormControl';
-import Col from 'react-bootstrap/lib/Col';
-import ControlLabel from 'react-bootstrap/lib/ControlLabel';
-import Button  from 'react-bootstrap/lib/Button';
-import FieldGroup  from 'react-bootstrap/lib/Button';
+import { FieldGroup, FormGroup, Form, FormControl, Col, ControlLabel, Button }  from 'react-bootstrap';
+
+
 
 export default class Login extends Component{
     constructor(props){
@@ -19,7 +15,7 @@ export default class Login extends Component{
             password: '',
         };
     }
-      
+
      handleChange(event) {
         const target = event.target;
         const value = event.target.value;
@@ -35,7 +31,7 @@ export default class Login extends Component{
             email,
             password,
         } = this.state;
-    
+
         const data = {
             email,
             password,
@@ -47,15 +43,15 @@ export default class Login extends Component{
                 });
             } else{
                 browserHistory.push('/');
-            
+
             }
         });
     }
 
-    
+
     render(){
         const error = this.state.error;
-        return(              
+        return(
                 <Form horizontal onSubmit={this.handleSubmit.bind(this)}>
                     <Col
                     className="logo-header"
@@ -66,10 +62,10 @@ export default class Login extends Component{
                     lgOffset={4}
                     smOffset={2}
                     xsOffset={3}>
-                    </Col>            
+                    </Col>
                     <FormGroup controlId="login-email">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                         sm={2}
                         md={2}
                         lg={2}
@@ -84,19 +80,19 @@ export default class Login extends Component{
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>  
-                            <FormControl 
-                            type="email" 
-                            placeholder="Email" 
-                            name="email" 
+                        smOffset={1}>
+                            <FormControl
+                            type="email"
+                            placeholder="Email"
+                            name="email"
                             bsSize="lg"
-                            value={this.state.email} 
+                            value={this.state.email}
                             onChange={this.handleChange.bind(this)} />
                         </Col>
                     </FormGroup>
                     <FormGroup controlId="login-senha">
-                        <Col 
-                        componentClass={ControlLabel} 
+                        <Col
+                        componentClass={ControlLabel}
                        sm={2}
                         md={2}
                         lg={2}
@@ -105,17 +101,17 @@ export default class Login extends Component{
                         xsOffset={1}>
                             Senha
                         </Col>
-                        <Col 
+                        <Col
                         sm={10}
                         md={8}
                         lg={8}
                         xs={8}
-                        smOffset={1}>   
-                            <FormControl 
-                            type="password" 
-                            placeholder="Senha" 
-                            name="password" 
-                            value={this.state.password} 
+                        smOffset={1}>
+                            <FormControl
+                            type="password"
+                            placeholder="Senha"
+                            name="password"
+                            value={this.state.password}
                             onChange={this.handleChange.bind(this)}
                             bsSize="lg"/>
                         </Col>
@@ -139,7 +135,7 @@ export default class Login extends Component{
                         <a href="join">
                             <Button bsStyle="link"> Não é Cadastrado? Crie uma conta agora!</Button>
                         </a>
-               
+
                     </Col>
                     { error.length > 0 ?
                     <Col
